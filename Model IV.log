@@ -1,0 +1,162 @@
+-------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /Users/Ashwin/Desktop/Model IV.log
+  log type:  text
+ opened on:   2 Nov 2020, 23:16:02
+
+. regress  SP500Y Gold YearSovereignBondYield MobilityChangechangeagainst BrentCrudebarrel NationalEmergencyDeclaration
+
+      Source |       SS       df       MS              Number of obs =     160
+-------------+------------------------------           F(  5,   154) =  406.38
+       Model |  12401067.6     5  2480213.52           Prob > F      =  0.0000
+    Residual |  939884.896   154  6103.14867           R-squared     =  0.9295
+-------------+------------------------------           Adj R-squared =  0.9273
+       Total |  13340952.5   159  83905.3617           Root MSE      =  78.123
+
+----------------------------------------------------------------------------------------------
+                      SP500Y |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-----------------------------+----------------------------------------------------------------
+                        Gold |   1.274415   .0939409    13.57   0.000     1.088836    1.459994
+      YearSovereignBondYield |   194.0646   50.96768     3.81   0.000     93.37856    294.7507
+ MobilityChangechangeagainst |   4.037752   .5728495     7.05   0.000     2.906095    5.169409
+            BrentCrudebarrel |   3.861907   1.155576     3.34   0.001      1.57908    6.144733
+NationalEmergencyDeclaration |  -137.5128   34.30873    -4.01   0.000    -205.2893   -69.73631
+                       _cons |   754.1071   203.5918     3.70   0.000      351.914      1156.3
+----------------------------------------------------------------------------------------------
+
+. estat vif
+
+    Variable |       VIF       1/VIF  
+-------------+----------------------
+YearSovere~d |      8.28    0.120747
+MobilityCh~t |      8.07    0.123932
+BrentCrude~l |      5.69    0.175751
+        Gold |      4.41    0.226968
+NationalEm~n |      1.81    0.553062
+-------------+----------------------
+    Mean VIF |      5.65
+
+. tsset  TimeX1, daily
+variable TimeX1 not found
+r(111);
+
+. tsset  Time, daily
+        time variable:  Time, 02jan1960 to 09jun1960
+                delta:  1 day
+
+. regress  SP500Y Gold YearSovereignBondYield MobilityChangechangeagainst BrentCrudebarrel NationalEmergencyDeclaration
+
+      Source |       SS       df       MS              Number of obs =     160
+-------------+------------------------------           F(  5,   154) =  406.38
+       Model |  12401067.6     5  2480213.52           Prob > F      =  0.0000
+    Residual |  939884.896   154  6103.14867           R-squared     =  0.9295
+-------------+------------------------------           Adj R-squared =  0.9273
+       Total |  13340952.5   159  83905.3617           Root MSE      =  78.123
+
+----------------------------------------------------------------------------------------------
+                      SP500Y |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-----------------------------+----------------------------------------------------------------
+                        Gold |   1.274415   .0939409    13.57   0.000     1.088836    1.459994
+      YearSovereignBondYield |   194.0646   50.96768     3.81   0.000     93.37856    294.7507
+ MobilityChangechangeagainst |   4.037752   .5728495     7.05   0.000     2.906095    5.169409
+            BrentCrudebarrel |   3.861907   1.155576     3.34   0.001      1.57908    6.144733
+NationalEmergencyDeclaration |  -137.5128   34.30873    -4.01   0.000    -205.2893   -69.73631
+                       _cons |   754.1071   203.5918     3.70   0.000      351.914      1156.3
+----------------------------------------------------------------------------------------------
+
+. estat bgodfrey, lags(10)
+
+Breusch-Godfrey LM test for autocorrelation
+---------------------------------------------------------------------------
+    lags(p)  |          chi2               df                 Prob > chi2
+-------------+-------------------------------------------------------------
+      10     |         94.381              10                   0.0000
+---------------------------------------------------------------------------
+                        H0: no serial correlation
+
+. predict r, resid
+
+. gen rlag=L.r
+(1 missing value generated)
+
+. scatter r rlag, xline(0) yline(0)
+
+. newey SP500Y Gold YearSovereignBondYield MobilityChangechangeagainst BrentCrudebarrel NationalEmergencyDeclaration,lag(0)
+
+Regression with Newey-West standard errors          Number of obs  =       160
+maximum lag: 0                                      F(  5,   154)  =    398.88
+                                                    Prob > F       =    0.0000
+
+----------------------------------------------------------------------------------------------
+                             |             Newey-West
+                      SP500Y |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-----------------------------+----------------------------------------------------------------
+                        Gold |   1.274415   .0938575    13.58   0.000     1.089001    1.459829
+      YearSovereignBondYield |   194.0646   45.67338     4.25   0.000     103.8374    284.2918
+ MobilityChangechangeagainst |   4.037752   .6058077     6.67   0.000     2.840986    5.234518
+            BrentCrudebarrel |   3.861907   .9036951     4.27   0.000     2.076668    5.647145
+NationalEmergencyDeclaration |  -137.5128   38.24363    -3.60   0.000    -213.0626   -61.96295
+                       _cons |   754.1071   207.5103     3.63   0.000     344.1729    1164.041
+----------------------------------------------------------------------------------------------
+
+. regress  SP500Y Gold YearSovereignBondYield MobilityChangechangeagainst BrentCrudebarrel NationalEmergencyDeclaration
+
+      Source |       SS       df       MS              Number of obs =     160
+-------------+------------------------------           F(  5,   154) =  406.38
+       Model |  12401067.6     5  2480213.52           Prob > F      =  0.0000
+    Residual |  939884.896   154  6103.14867           R-squared     =  0.9295
+-------------+------------------------------           Adj R-squared =  0.9273
+       Total |  13340952.5   159  83905.3617           Root MSE      =  78.123
+
+----------------------------------------------------------------------------------------------
+                      SP500Y |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-----------------------------+----------------------------------------------------------------
+                        Gold |   1.274415   .0939409    13.57   0.000     1.088836    1.459994
+      YearSovereignBondYield |   194.0646   50.96768     3.81   0.000     93.37856    294.7507
+ MobilityChangechangeagainst |   4.037752   .5728495     7.05   0.000     2.906095    5.169409
+            BrentCrudebarrel |   3.861907   1.155576     3.34   0.001      1.57908    6.144733
+NationalEmergencyDeclaration |  -137.5128   34.30873    -4.01   0.000    -205.2893   -69.73631
+                       _cons |   754.1071   203.5918     3.70   0.000      351.914      1156.3
+----------------------------------------------------------------------------------------------
+
+. estat ovtest
+
+Ramsey RESET test using powers of the fitted values of SP500Y
+       Ho:  model has no omitted variables
+                 F(3, 151) =      3.67
+                  Prob > F =      0.0138
+
+. regress  r Gold YearSovereignBondYield MobilityChangechangeagainst BrentCrudebarrel NationalEmergencyDeclaration Time
+
+      Source |       SS       df       MS              Number of obs =     160
+-------------+------------------------------           F(  6,   153) =    6.92
+       Model |  200543.192     6  33423.8653           Prob > F      =  0.0000
+    Residual |  739341.721   153  4832.29883           R-squared     =  0.2134
+-------------+------------------------------           Adj R-squared =  0.1825
+       Total |  939884.913   159  5911.22587           Root MSE      =  69.515
+
+----------------------------------------------------------------------------------------------
+                           r |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-----------------------------+----------------------------------------------------------------
+                        Gold |   -.485215   .1125181    -4.31   0.000    -.7075047   -.2629253
+      YearSovereignBondYield |   238.2195    58.5167     4.07   0.000     122.6145    353.8245
+ MobilityChangechangeagainst |  -1.347214   .5509618    -2.45   0.016    -2.435689   -.2587394
+            BrentCrudebarrel |  -.4769672   1.030911    -0.46   0.644    -2.513626    1.559691
+NationalEmergencyDeclaration |  -83.09385   33.14149    -2.51   0.013    -148.5679   -17.61984
+                        Time |   2.686175   .4169723     6.44   0.000     1.862409    3.509942
+                       _cons |   378.7132   190.4588     1.99   0.049     2.444575    754.9818
+----------------------------------------------------------------------------------------------
+
+. scalar Rsq= .2134
+
+. scalar chisqcal= 160*Rsq
+
+. display chisqcal
+34.144
+
+. log close
+      name:  <unnamed>
+       log:  /Users/Ashwin/Desktop/Model IV.log
+  log type:  text
+ closed on:   2 Nov 2020, 23:20:31
+-------------------------------------------------------------------------------------------------------------------------------------------

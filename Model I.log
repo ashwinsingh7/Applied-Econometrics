@@ -1,0 +1,111 @@
+-------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /Users/Ashwin/Desktop/Model I.log
+  log type:  text
+ opened on:  31 Oct 2020, 21:01:36
+
+. import excel "/Users/Ashwin/Desktop/Applied Econometrics Paper/New Model/S&P 500 Model.xlsx", sheet("Regression Data") firstrow
+no; data in memory would be lost
+r(4);
+
+. 
+. import excel "/Users/Ashwin/Desktop/Applied Econometrics Paper/New Model/S&P 500 Model.xlsx", sheet("Regression Data") firstrow clear
+
+. su  SP500Y TimeX1 MobilityChangechangeagainst WTICrudebarrel NationalEmergencyDeclaration Gold YearSovereignBondYield YearSovereignBondYi
+> eld BrentCrudebarrel
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+      SP500Y |       160    3066.668    289.6642     2237.4    3580.84
+      TimeX1 |       160        80.5    46.33213          1        160
+MobilityCh~t |       160   -49.73132    30.72172  -104.5498   4.527773
+WTICrudeba~l |       160    36.27394    12.61398     -36.98      58.25
+NationalEm~n |       160       .0625    .2428215          0          1
+-------------+--------------------------------------------------------
+        Gold |       160    1731.896    138.4335    1472.35     2061.5
+YearSovere~d |       160       .8485     .349821       .512      1.774
+YearSovere~d |       160       .8485     .349821       .512      1.774
+BrentCrude~l |       160    38.87734    12.78884       9.12      63.66
+
+. regress  SP500Y TimeX1  MobilityChangechangeagainst NationalEmergencyDeclaration WTICrudebarrel
+
+      Source |       SS       df       MS              Number of obs =     160
+-------------+------------------------------           F(  4,   155) =  339.14
+       Model |  11972934.8     4   2993233.7           Prob > F      =  0.0000
+    Residual |   1368017.7   155  8825.92066           R-squared     =  0.8975
+-------------+------------------------------           Adj R-squared =  0.8948
+       Total |  13340952.5   159  83905.3617           Root MSE      =  93.946
+
+----------------------------------------------------------------------------------------------
+                      SP500Y |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-----------------------------+----------------------------------------------------------------
+                      TimeX1 |   2.701959   .1735035    15.57   0.000     2.359222    3.044695
+ MobilityChangechangeagainst |   6.335622   .4811277    13.17   0.000     5.385208    7.286035
+NationalEmergencyDeclaration |  -139.4605   37.55201    -3.71   0.000    -213.6402   -65.28071
+              WTICrudebarrel |   3.799508   1.054298     3.60   0.000     1.716862    5.882153
+                       _cons |   3035.132   57.09998    53.15   0.000     2922.338    3147.927
+----------------------------------------------------------------------------------------------
+
+. estat ovtest
+
+Ramsey RESET test using powers of the fitted values of SP500Y
+       Ho:  model has no omitted variables
+                 F(3, 152) =     19.23
+                  Prob > F =      0.0000
+
+. regress  SP500Y TimeX1  MobilityChangechangeagainst NationalEmergencyDeclaration WTICrudebarrel
+
+      Source |       SS       df       MS              Number of obs =     160
+-------------+------------------------------           F(  4,   155) =  339.14
+       Model |  11972934.8     4   2993233.7           Prob > F      =  0.0000
+    Residual |   1368017.7   155  8825.92066           R-squared     =  0.8975
+-------------+------------------------------           Adj R-squared =  0.8948
+       Total |  13340952.5   159  83905.3617           Root MSE      =  93.946
+
+----------------------------------------------------------------------------------------------
+                      SP500Y |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-----------------------------+----------------------------------------------------------------
+                      TimeX1 |   2.701959   .1735035    15.57   0.000     2.359222    3.044695
+ MobilityChangechangeagainst |   6.335622   .4811277    13.17   0.000     5.385208    7.286035
+NationalEmergencyDeclaration |  -139.4605   37.55201    -3.71   0.000    -213.6402   -65.28071
+              WTICrudebarrel |   3.799508   1.054298     3.60   0.000     1.716862    5.882153
+                       _cons |   3035.132   57.09998    53.15   0.000     2922.338    3147.927
+----------------------------------------------------------------------------------------------
+
+. predict r, resid
+(1 missing value generated)
+
+. regress r  TimeX1 MobilityChangechangeagainst WTICrudebarrel NationalEmergencyDeclaration Gold YearSovereignBondYield
+
+      Source |       SS       df       MS              Number of obs =     160
+-------------+------------------------------           F(  6,   153) =   19.67
+       Model |  595695.105     6  99282.5175           Prob > F      =  0.0000
+    Residual |  772322.599   153  5047.86013           R-squared     =  0.4354
+-------------+------------------------------           Adj R-squared =  0.4133
+       Total |   1368017.7   159  8603.88493           Root MSE      =  71.048
+
+----------------------------------------------------------------------------------------------
+                           r |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-----------------------------+----------------------------------------------------------------
+                      TimeX1 |  -.0193318   .4282822    -0.05   0.964     -.865442    .8267783
+ MobilityChangechangeagainst |  -3.151478   .5307491    -5.94   0.000    -4.200021   -2.102936
+              WTICrudebarrel |  -2.195804    .824096    -2.66   0.009     -3.82388   -.5677277
+NationalEmergencyDeclaration |  -68.62955   33.56887    -2.04   0.043    -134.9479   -2.311215
+                        Gold |   .8524669   .1123627     7.59   0.000     .6304842     1.07445
+      YearSovereignBondYield |   464.2461   58.54886     7.93   0.000     348.5775    579.9147
+                       _cons |  -1941.528   194.2604    -9.99   0.000    -2325.306   -1557.749
+----------------------------------------------------------------------------------------------
+
+. scalar Rsq= .4354 
+
+. scalar chisqcal= 160*Rsq
+
+. display chisqcal
+69.664
+
+. log close
+      name:  <unnamed>
+       log:  /Users/Ashwin/Desktop/Model I.log
+  log type:  text
+ closed on:  31 Oct 2020, 21:04:48
+-------------------------------------------------------------------------------------------------------------------------------------------

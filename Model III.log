@@ -1,0 +1,79 @@
+-------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /Users/Ashwin/Desktop/Model III.log
+  log type:  text
+ opened on:   2 Nov 2020, 18:52:17
+
+. 
+. import excel "/Users/Ashwin/Desktop/Applied Econometrics Paper/New Model/S&P 500 Model.xlsx", sheet("Regression Data") firstrow clear
+
+. regress  SP500Y Gold YearSovereignBondYield MobilityChangechangeagainst WTICrudebarrel NationalEmergencyDeclaration
+
+      Source |       SS       df       MS              Number of obs =     160
+-------------+------------------------------           F(  5,   154) =  392.65
+       Model |  12370583.1     5  2474116.62           Prob > F      =  0.0000
+    Residual |  970369.399   154  6301.09999           R-squared     =  0.9273
+-------------+------------------------------           Adj R-squared =  0.9249
+       Total |  13340952.5   159  83905.3617           Root MSE      =  79.379
+
+----------------------------------------------------------------------------------------------
+                      SP500Y |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-----------------------------+----------------------------------------------------------------
+                        Gold |   1.334008   .0915549    14.57   0.000     1.153142    1.514874
+      YearSovereignBondYield |   226.7396    49.8428     4.55   0.000     128.2757    325.2034
+ MobilityChangechangeagainst |    4.48544    .545669     8.22   0.000     3.407478    5.563403
+              WTICrudebarrel |   2.234666   .9138257     2.45   0.016     .4294143    4.039918
+NationalEmergencyDeclaration |  -127.1829   34.61749    -3.67   0.000    -195.5693   -58.79645
+                       _cons |   713.8725   206.1998     3.46   0.001     306.5273    1121.218
+----------------------------------------------------------------------------------------------
+
+.  estat vif
+
+    Variable |       VIF       1/VIF  
+-------------+----------------------
+YearSovere~d |      7.67    0.130354
+MobilityCh~t |      7.09    0.141016
+        Gold |      4.05    0.246703
+WTICrudeba~l |      3.35    0.298255
+NationalEm~n |      1.78    0.560859
+-------------+----------------------
+    Mean VIF |      4.79
+
+. tsset  TimeX1, daily
+        time variable:  TimeX1, 02jan1960 to 09jun1960
+                delta:  1 day
+
+. estat bgodfrey, lags(10)
+
+Breusch-Godfrey LM test for autocorrelation
+---------------------------------------------------------------------------
+    lags(p)  |          chi2               df                 Prob > chi2
+-------------+-------------------------------------------------------------
+      10     |         91.049              10                   0.0000
+---------------------------------------------------------------------------
+                        H0: no serial correlation
+
+. newey SP500Y Gold YearSovereignBondYield MobilityChangechangeagainst WTICrudebarrel NationalEmergencyDeclaration, lag(0)
+
+Regression with Newey-West standard errors          Number of obs  =       160
+maximum lag: 0                                      F(  5,   154)  =    361.52
+                                                    Prob > F       =    0.0000
+
+----------------------------------------------------------------------------------------------
+                             |             Newey-West
+                      SP500Y |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-----------------------------+----------------------------------------------------------------
+                        Gold |   1.334008   .0963995    13.84   0.000     1.143572    1.524444
+      YearSovereignBondYield |   226.7396   46.33714     4.89   0.000     135.2011     318.278
+ MobilityChangechangeagainst |    4.48544   .6515666     6.88   0.000     3.198278    5.772602
+              WTICrudebarrel |   2.234666   1.438791     1.55   0.122     -.607649    5.076981
+NationalEmergencyDeclaration |  -127.1829   38.59771    -3.30   0.001    -203.4322   -50.93358
+                       _cons |   713.8725   206.5349     3.46   0.001     305.8652     1121.88
+----------------------------------------------------------------------------------------------
+
+. log close
+      name:  <unnamed>
+       log:  /Users/Ashwin/Desktop/Model III.log
+  log type:  text
+ closed on:   2 Nov 2020, 18:53:34
+-------------------------------------------------------------------------------------------------------------------------------------------
