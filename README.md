@@ -1,4 +1,4 @@
-# Applied Econometrics: Impact of COVID-19 on Stock Market
+# Applied Econometrics: Impact of COVID-19 on the Stock Market
 
 
 ## Project Overview
