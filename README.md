@@ -42,6 +42,10 @@ Misspecification Errors: Ramsey’s RESET test ensured correct functional form.
 
 Normality: Jarque-Bera test assessed residual distribution.
 
+<img width="300" alt="Model IV (residuals vs time)" src="https://github.com/user-attachments/assets/bf98d63a-492b-491f-9aca-fda0be3ab43e" />  <img width="300" alt="Model IV residual hist plot" src="https://github.com/user-attachments/assets/d4df1ec9-e65b-4fa9-926d-d650506319a8" />
+
+
+
 
 ## Key Findings
 
