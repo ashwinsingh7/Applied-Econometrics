@@ -55,6 +55,8 @@ Pandemic Announcements: Government interventions and major pandemic-related news
 
 Sovereign Bond Yields: Increased bond yields positively correlated with stock market movements, aligning with investor expectations of risk-return trade-offs.
 
+<img width="651" alt="Model IV regression" src="https://github.com/user-attachments/assets/8bf54ad8-027a-4736-9a80-84b6654701cd" />
+
 
 ## Final Model
 
@@ -71,3 +73,6 @@ Gold Prices
 10-Year Sovereign Bond Yields
 
 This model explains 92.95% of the variation in the S&P 500 index with all variables statistically significant at the 1% level.
+
+<img width="666" alt="Model IV Plot" src="https://github.com/user-attachments/assets/317d1ba7-662e-4403-b5ef-045d4ebb5b8e" />
+
