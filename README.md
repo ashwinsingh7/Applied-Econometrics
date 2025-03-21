@@ -74,5 +74,5 @@ Gold Prices
 
 This model explains 92.95% of the variation in the S&P 500 index with all variables statistically significant at the 1% level.
 
-<img width="666" alt="Model IV Plot" src="https://github.com/user-attachments/assets/317d1ba7-662e-4403-b5ef-045d4ebb5b8e" />
+<img width="600" alt="Model IV Plot" src="https://github.com/user-attachments/assets/317d1ba7-662e-4403-b5ef-045d4ebb5b8e" />
 
