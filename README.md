@@ -1,4 +1,4 @@
-# Applied Econometrics: Impact of COVID-19 on the Stock Market
+# Applied Econometrics: Modelling the Stock Market in 2020 Using Macroeconomics Variables and Covid-19 Events
 
 
 ## Project Overview
@@ -60,6 +60,7 @@ Pandemic Announcements: Government interventions and major pandemic-related news
 Sovereign Bond Yields: Increased bond yields positively correlated with stock market movements, aligning with investor expectations of risk-return trade-offs.
 
 <img width="651" alt="Model IV regression" src="https://github.com/user-attachments/assets/8bf54ad8-027a-4736-9a80-84b6654701cd" />
+<img width="651" alt="Screenshot 2025-03-24 at 11 08 52 AM" src="https://github.com/user-attachments/assets/10fbd098-437a-4530-bc7f-0c2528ad274d" />
 
 
 ## Final Model
