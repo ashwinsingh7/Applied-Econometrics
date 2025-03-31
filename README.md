@@ -67,15 +67,11 @@ Sovereign Bond Yields: Increased bond yields positively correlated with stock ma
 
 The final regression model includes:
 
-Mobility Change
-
-Brent Crude Oil Prices
-
-Pandemic-Related Events (Dummy Variable)
-
-Gold Prices
-
-10-Year Sovereign Bond Yields
+- Mobility Change
+- Brent Crude Oil Prices
+- Pandemic-Related Events (Dummy Variable)
+- Gold Prices
+- 10-Year Sovereign Bond Yields
 
 This model explains 92.95% of the variation in the S&P 500 index with all variables statistically significant at the 1% level.
 
