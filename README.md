@@ -1,9 +1,9 @@
-# Applied Econometrics: Modelling the Stock Market in 2020 Using Macroeconomics Variables and Covid-19 Events
+# Applied Econometrics: Modelling the Stock Market in 2020 Using Macroeconomic Variables and Covid-19 Events
 
 
 ## Project Overview
 
-This project investigates the impact of economic variables and the COVID-19 pandemic on the stock market, specifically the S&P 500 index. Using econometric modeling, multiple regression models were developed to analyze the relationships between mobility, oil prices, government interventions, and financial indicators during the pandemic. The study applies rigorous statistical testing to refine the model and ensure accuracy.
+This project investigates the impact of economic variables and the COVID-19 pandemic on the stock market, specifically the S&P 500 index. Using econometric modeling, multiple regression models were developed to analyse the relationships between mobility, oil prices, government interventions, and financial indicators during the pandemic. The study uses theoretically-grounded explanatory variables and rigorous statistical testing to refine the model and accuracy.
 
 
 ## Objective
@@ -32,13 +32,11 @@ Variable Selection: Factors such as mobility changes, oil prices, gold prices, a
 
 Regression Analysis: Ordinary Least Squares (OLS) regression was used to estimate the impact of each variable on the S&P 500 index.
 
-Diagnostic Testing:
-
 Multicollinearity: Variance Inflation Factor (VIF) was used to detect and eliminate highly correlated regressors.
 
 Autocorrelation: Breusch-Godfrey test identified serial correlation, corrected using HAC standard errors.
 
-Misspecification Errors: Ramsey’s RESET test ensured correct functional form.
+Misspecification Errors: Ramsey’s RESET test used to investigate model misspecification.
 
 Normality: Jarque-Bera test assessed residual distribution.
 
@@ -49,7 +47,7 @@ Normality: Jarque-Bera test assessed residual distribution.
 
 ## Key Findings
 
-Mobility and Stock Market Movements: Increased mobility correlated positively with stock market growth, indicating economic confidence.
+Mobility and Stock Market Movements: Increased mobility correlated positively with stock market growth, indicating higher economic activity and positive investor sentiment.
 
 Impact of Oil Prices: Initially, WTI crude was included but found insignificant. Brent Crude was a better predictor of stock market changes.
 
