@@ -75,3 +75,17 @@ This model explains 93% of the variation in the S&P 500 index with all variables
 
 <img width="600" alt="Model IV Plot" src="https://github.com/user-attachments/assets/317d1ba7-662e-4403-b5ef-045d4ebb5b8e" />
 
+
+## Takeaways
+
+During crises like the COVID-19 pandemic, financial markets often behave in unpredictable ways. This project demonstrates that even amidst global uncertainty, the stock market’s trajectory can be systematically modeled using relevant macroeconomic and behavioral variables.
+
+- The ability to **quantify the market impact** of events (like lockdown announcements or oil price crashes) allows for better decision-making.
+- It serves as a **framework for crisis-time econometrics**, combining theory and diagnostics in a replicable, policy-relevant structure.
+- The findings can provide insights for - identifying macroeconomic indicators (like bond yields and oil prices) that are predictive of market performance, and how public health announcements affect financial markets.
+
+
+
+
+
+
